@@ -1,17 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-sans: 'Outfit', 'Inter', sans-serif;
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #0f172a;
+  --color-brand-950: #020617;
+}
 
-@layer base {
-  body {
-    background-color: #0b0f19;
-    color: #f8fafc;
-    font-family: 'Outfit', 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  background-color: #0b0f19;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .glass-panel {
@@ -49,19 +59,93 @@
 }
 
 .status-badge-active {
-  @apply bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: rgb(52, 211, 153);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-badge-expired {
-  @apply bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background-color: rgba(245, 158, 11, 0.1);
+  color: rgb(251, 191, 36);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-badge-cancelled {
-  @apply bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background-color: rgba(244, 63, 94, 0.1);
+  color: rgb(251, 113, 133);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-badge-pending {
-  @apply bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: rgb(129, 140, 248);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge-paid {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: rgb(52, 211, 153);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge-unpaid {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: rgb(251, 191, 36);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge-overdue {
+  background-color: rgba(244, 63, 94, 0.1);
+  color: rgb(251, 113, 133);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge-rejected {
+  background-color: rgba(244, 63, 94, 0.1);
+  color: rgb(251, 113, 133);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge-approved {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: rgb(52, 211, 153);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 /* Custom Scrollbar */
