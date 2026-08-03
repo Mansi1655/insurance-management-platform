@@ -43,3 +43,6 @@ backend/uploads/*
 *.sw?
 .DS_Store
 Thumbs.db
+
+# Interview Prep Guide
+interview_prep_guide.md
