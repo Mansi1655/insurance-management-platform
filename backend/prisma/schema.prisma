@@ -1,0 +1,76 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   // "ADMIN", "AGENT", "CUSTOMER"
+  createdAt DateTime @default(now())
+  customer  Customer?
+}
+
+model Customer {
+  id        Int        @id @default(autoincrement())
+  userId    Int?       @unique
+  user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  dob       String
+  phone     String
+  address   String
+  email     String     @unique
+  createdAt DateTime   @default(now())
+  policies  Policy[]
+  documents Document[]
+}
+
+model Policy {
+  id            Int              @id @default(autoincrement())
+  customerId    Int
+  customer      Customer         @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  policyType    String           // "Life", "Health", "Auto", "Home"
+  policyNumber  String           @unique
+  premiumAmount Float
+  startDate     String           // YYYY-MM-DD
+  endDate       String           // YYYY-MM-DD
+  status        String           // "ACTIVE", "EXPIRED", "CANCELLED"
+  claims        Claim[]
+  payments      PremiumPayment[]
+}
+
+model Claim {
+  id             Int      @id @default(autoincrement())
+  policyId       Int
+  policy         Policy   @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  claimAmount    Float
+  reason         String
+  status         String   // "PENDING", "APPROVED", "REJECTED"
+  submissionDate String   // YYYY-MM-DD
+  filePath       String?  // Supporting document link
+}
+
+model PremiumPayment {
+  id            Int      @id @default(autoincrement())
+  policyId      Int
+  policy        Policy   @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  dueDate       String   // YYYY-MM-DD
+  paymentDate   String?  // YYYY-MM-DD (null if unpaid)
+  amount        Float
+  paymentStatus String   // "PAID", "UNPAID", "OVERDUE"
+}
+
+model Document {
+  id         Int      @id @default(autoincrement())
+  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  fileName   String
+  filePath   String
+  uploadedAt DateTime @default(now())
+}
