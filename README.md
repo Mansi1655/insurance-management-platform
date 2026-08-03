@@ -42,6 +42,12 @@ The application includes a **Quick Role Switch** panel on the Login page for one
 
 ## Setup & Running Locally
 
+> [!NOTE]
+> **Local Database Selection**:
+> This repository is configured to use **PostgreSQL** by default for production deployment on Render/Railway.
+> * **To run locally with PostgreSQL**: Create a local database, add `DATABASE_URL="postgresql://username:password@localhost:5432/insurance_db"` in `backend/.env`, and run migrations.
+> * **To run locally with SQLite (Zero Config)**: Simply modify `backend/prisma/schema.prisma` to set provider back to `"sqlite"` and url to `"file:./dev.db"`, and run `npm run db:migrate`.
+
 ### 1. Install Dependencies
 Run the installation script in the root directory to set up both the backend and frontend packages:
 ```bash
